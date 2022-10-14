@@ -1,4 +1,4 @@
-(ns tutorial.functions
+(ns chapter1.functions
   (:gen-class))
 
 (defn -main

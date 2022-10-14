@@ -1,4 +1,4 @@
-(ns tutorial.petstore
+(ns chapter1.petstore
   (:gen-class))
 
 (defn petToHumanAge

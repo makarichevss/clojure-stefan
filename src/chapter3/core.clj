@@ -1,4 +1,4 @@
-(ns tutorial.core
+(ns chapter3.core
   (:gen-class))
 
 (defn -main
