@@ -1,50 +1,38 @@
 (ns chapter2.loops)
 
-(defn condIf
+(defn loop-first
   []
-  (println "\ncondIf:")
-  (if (= 5 5)
-    (println "equal")
-    (println "not equal")
+  (println "\nLoopFor")
+  (loop [x 0]
+    (when (< x 10)
+      (println x)
+      (recur (+ x 2)))
     ))
 
-(defn conIfDo
+(defn loop-second
   []
-  (println "\ncondIf:")
-  (if (= 5 5)
-    (do (println "Equals first")
-        (println "Print second")
-        (println (type atom)))
-    (do (println "Not equals first")
-        (println "Print second"))))
+  (println "\nLoopForSimple")
+  (dotimes [x 10]
+    (println x)))
 
-(defn condNestedId
-  []
-  (println "\ncondNestedIf:")
-  (if (or (= 5 5) (= 2 2))
-    (println "equal")
-    (println "not equal")
-    ))
+(defn loop-third
+  [count]
+  (println "\nLoopWhile")
+  (def x (atom 0))
+  (while (< @x count)
+    (do
+      (println @x)
+      (swap! x + 2)
+      )))
 
-(defn condCase
-  [pet]
-  (println "\ncondNestedIf:")
-  (case pet
-    "cat" (println "cat")
-    "dog" (println "dog")
-    ))
+(defn loop-fourth
+  [seq]
+  (println "\nLoopSeq")
+  (doseq [x seq]
+    (println (inc x)))
+  )
 
-(defn condCond
-  [amount]
-  (println "\ncondCond:")
-  (cond
-    (<= amount 2) (println "few")
-    (<= amount 10) (println "several")
-    (<= amount 100) (println "many")
-    :else (println "a lot")))
-
-(condIf)
-(conIfDo)
-(condNestedId)
-(condCase "cat")
-(condCond 17)
+(loop-first)
+(loop-second)
+(loop-third 5)
+(loop-fourth [1.0 2 3])
