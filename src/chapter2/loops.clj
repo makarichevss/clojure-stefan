@@ -15,10 +15,12 @@
   (dotimes [x 10]
     (println x)))
 
+(def x (atom 0))
+
 (defn loop-third
   [count]
   (println "\nLoopWhile")
-  (def x (atom 0))
+  ;(def x (atom 0))
   (while (< @x count)
     (do
       (println @x)

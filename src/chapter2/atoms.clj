@@ -1,19 +1,22 @@
 (ns chapter2.atoms)
 
-(defn atom-first
-  []
-  (def amount (atom 100))
-  (println @amount)
-
-  (swap! amount + 2)
-  (println @amount)
-
-  (reset! amount 110)
-  (println @amount)
-
-  (compare-and-set! amount 110 120)
-  (println @amount)
-  )
-
-
-(atom-first)
+(defn can-fast-attack?
+  "Returns true if a fast-attack can be made, false otherwise."
+  [knight-awake?]
+  (not knight-awake?))
+(defn can-spy?
+  "Returns true if the kidnappers can be spied upon, false otherwise."
+  [knight-awake? archer-awake? prisoner-awake?]
+  (or knight-awake? archer-awake? prisoner-awake?))
+(defn can-signal-prisoner?
+  "Returns true if the prisoner can be signalled, false otherwise."
+  [archer-awake? prisoner-awake?]
+  (and prisoner-awake? (not archer-awake?)))
+(defn can-free-prisoner?
+  "Returns true if prisoner can be freed, false otherwise."
+  [knight-awake? archer-awake? prisoner-awake? dog-present?]
+  (or (and (not knight-awake?)
+           (not archer-awake?)
+           prisoner-awake?)
+      (and (not archer-awake?)
+           dog-present?)))

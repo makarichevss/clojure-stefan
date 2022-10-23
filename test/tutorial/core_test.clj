@@ -1,5 +1,5 @@
-(ns tutorial.core_test
-  (:require [chapter1.core :refer :all]
+(ns tutorial.core-test
+  (:require [practice.clojure_rus :refer :all]
             [clojure.test :refer [deftest testing is]]
             ))
 
