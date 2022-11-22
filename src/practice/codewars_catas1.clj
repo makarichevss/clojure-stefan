@@ -40,3 +40,35 @@
     (long (/ (reduce + numbers) (count numbers))))
   )
 ;(find-average [1 2 3 3 4])
+
+(defn lowercase_count [strng]
+  (count (re-seq #"[a-z]" strng))
+  )
+;(lowercase_count "abcD")
+
+(defn slope [v]
+  (let [[a1 b1 a2 b2] v]
+    (if (zero? (- a2 a1))
+      "undefined"
+      (str (/ (- b2 b1) (- a2 a1)))))
+  )
+;(slope [19,3,20,3])
+
+(defn reverse-string [s]
+  (->> s reverse (apply str))
+  )
+;(reverse-string "abc")
+
+(defn hotpo [num]
+  (cond
+    (= 1 num) 0
+  (even? num) (inc (hotpo (/ num 2)))
+  :else (inc (hotpo (inc (* num 3)))))
+  )
+;(hotpo 6)
+
+(defn next-item
+  [xs item]
+  (second (drop-while (partial not= item) xs))
+  )
+;(next-item (range 1 25) 12)
